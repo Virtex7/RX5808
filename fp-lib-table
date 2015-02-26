@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name CSTCE16)(type KiCad)(uri ${KIPRJMOD}/CSTCE16.pretty)(options "")(descr ""))
+)
