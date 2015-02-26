@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2014-08-05 BZR 5054)-product   date = Do 26 Feb 2015 02:17:40 CET
+Cmp-Mod V01 Created by Cvpcb (2014-08-05 BZR 5054)-product   date = Do 26 Feb 2015 17:13:13 CET
 
 BeginCmp
 TimeStamp = /54EE2578;
@@ -31,7 +31,7 @@ EndCmp
 BeginCmp
 TimeStamp = /54EE9497;
 Reference = C5;
-ValeurCmp = 22µ;
+ValeurCmp = 10µ;
 IdModule  = Capacitors_SMD:C_1206;
 EndCmp
 
@@ -319,7 +319,7 @@ BeginCmp
 TimeStamp = /54EE6195;
 Reference = SW1;
 ValeurCmp = SWITCH_INV;
-IdModule  = ;
+IdModule  = Apem:2543xN;
 EndCmp
 
 BeginCmp
@@ -361,7 +361,7 @@ BeginCmp
 TimeStamp = /54EE5ACF;
 Reference = U2;
 ValeurCmp = RX5808;
-IdModule  = ;
+IdModule  = Foxtech:RX5808;
 EndCmp
 
 BeginCmp
