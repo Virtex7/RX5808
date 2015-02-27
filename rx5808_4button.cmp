@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2014-08-05 BZR 5054)-product   date = Fr 27 Feb 2015 14:29:29 CET
+Cmp-Mod V01 Created by Cvpcb (2014-08-05 BZR 5054)-product   date = Fr 27 Feb 2015 20:30:07 CET
 
 BeginCmp
 TimeStamp = /54EE2578;
@@ -141,13 +141,6 @@ IdModule  = Pin_Headers:Pin_Header_Straight_2x03;
 EndCmp
 
 BeginCmp
-TimeStamp = /54EE5D31;
-Reference = P4;
-ValeurCmp = BNC;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
-EndCmp
-
-BeginCmp
 TimeStamp = /54EE5FCF;
 Reference = P5;
 ValeurCmp = BNC;
@@ -166,6 +159,34 @@ TimeStamp = /54EEC3F3;
 Reference = P7;
 ValeurCmp = CONN_01X02;
 IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F07FE7;
+Reference = P8;
+ValeurCmp = CONN_01X01;
+IdModule  = Mounting_Holes:MountingHole_3-5mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F082A0;
+Reference = P9;
+ValeurCmp = CONN_01X01;
+IdModule  = Mounting_Holes:MountingHole_3-5mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F08359;
+Reference = P10;
+ValeurCmp = CONN_01X01;
+IdModule  = Mounting_Holes:MountingHole_3-5mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F08360;
+Reference = P11;
+ValeurCmp = CONN_01X01;
+IdModule  = Mounting_Holes:MountingHole_3-5mm;
 EndCmp
 
 BeginCmp
@@ -306,6 +327,13 @@ TimeStamp = /54F07BC5;
 Reference = R20;
 ValeurCmp = 220;
 IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F0E594;
+Reference = SMA_E1;
+ValeurCmp = SMA_EDGE;
+IdModule  = SMA_EDGE:SMA_EDGE;
 EndCmp
 
 BeginCmp
