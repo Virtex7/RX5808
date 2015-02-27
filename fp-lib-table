@@ -2,4 +2,5 @@
   (lib (name CSTCE16)(type KiCad)(uri ${KIPRJMOD}/CSTCE16.pretty)(options "")(descr ""))
   (lib (name Apem)(type KiCad)(uri ${KIPRJMOD}/Apem.pretty)(options "")(descr ""))
   (lib (name Foxtech)(type KiCad)(uri ${KIPRJMOD}/Foxtech.pretty)(options "")(descr ""))
+  (lib (name Rafi)(type KiCad)(uri ${KIPRJMOD}/Rafi.pretty)(options "")(descr ""))
 )

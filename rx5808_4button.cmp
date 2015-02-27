@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2014-08-05 BZR 5054)-product   date = Do 26 Feb 2015 17:13:13 CET
+Cmp-Mod V01 Created by Cvpcb (2014-08-05 BZR 5054)-product   date = Fr 27 Feb 2015 14:29:29 CET
 
 BeginCmp
 TimeStamp = /54EE2578;
@@ -106,34 +106,6 @@ IdModule  = LEDs:LED-0603;
 EndCmp
 
 BeginCmp
-TimeStamp = /54EED267;
-Reference = D4;
-ValeurCmp = weiß;
-IdModule  = LEDs:LED-0603;
-EndCmp
-
-BeginCmp
-TimeStamp = /54EED5DC;
-Reference = D5;
-ValeurCmp = weiß;
-IdModule  = LEDs:LED-0603;
-EndCmp
-
-BeginCmp
-TimeStamp = /54EED78E;
-Reference = D6;
-ValeurCmp = weiß;
-IdModule  = LEDs:LED-0603;
-EndCmp
-
-BeginCmp
-TimeStamp = /54EED7AC;
-Reference = D7;
-ValeurCmp = weiß;
-IdModule  = LEDs:LED-0603;
-EndCmp
-
-BeginCmp
 TimeStamp = /54EE0EEA;
 Reference = IC1;
 ValeurCmp = ATMEGA328-A;
@@ -144,7 +116,7 @@ BeginCmp
 TimeStamp = /54EE8563;
 Reference = L1;
 ValeurCmp = 2,2µH 1,4A;
-IdModule  = ;
+IdModule  = Inductors:self_cms_we-pd3;
 EndCmp
 
 BeginCmp
@@ -281,30 +253,58 @@ IdModule  = Resistors_SMD:R_0603;
 EndCmp
 
 BeginCmp
-TimeStamp = /54EED2CC;
+TimeStamp = /54F075A5;
 Reference = R13;
-ValeurCmp = 470;
+ValeurCmp = 220;
 IdModule  = Resistors_SMD:R_0603;
 EndCmp
 
 BeginCmp
-TimeStamp = /54EED5E2;
+TimeStamp = /54F07909;
 Reference = R14;
-ValeurCmp = 470;
+ValeurCmp = 220;
 IdModule  = Resistors_SMD:R_0603;
 EndCmp
 
 BeginCmp
-TimeStamp = /54EED794;
+TimeStamp = /54F079CF;
 Reference = R15;
-ValeurCmp = 470;
+ValeurCmp = 220;
 IdModule  = Resistors_SMD:R_0603;
 EndCmp
 
 BeginCmp
-TimeStamp = /54EED7B2;
+TimeStamp = /54F079DB;
 Reference = R16;
-ValeurCmp = 470;
+ValeurCmp = 220;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F07BA1;
+Reference = R17;
+ValeurCmp = 220;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F07BAD;
+Reference = R18;
+ValeurCmp = 220;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F07BB9;
+Reference = R19;
+ValeurCmp = 220;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F07BC5;
+Reference = R20;
+ValeurCmp = 220;
 IdModule  = Resistors_SMD:R_0603;
 EndCmp
 
@@ -323,34 +323,6 @@ IdModule  = Apem:2543xN;
 EndCmp
 
 BeginCmp
-TimeStamp = /54EED084;
-Reference = SW2;
-ValeurCmp = SW_PUSH;
-IdModule  = ;
-EndCmp
-
-BeginCmp
-TimeStamp = /54EED5D6;
-Reference = SW3;
-ValeurCmp = SW_PUSH;
-IdModule  = ;
-EndCmp
-
-BeginCmp
-TimeStamp = /54EED788;
-Reference = SW4;
-ValeurCmp = SW_PUSH;
-IdModule  = ;
-EndCmp
-
-BeginCmp
-TimeStamp = /54EED7A6;
-Reference = SW5;
-ValeurCmp = SW_PUSH;
-IdModule  = ;
-EndCmp
-
-BeginCmp
 TimeStamp = /54EE7D7A;
 Reference = U1;
 ValeurCmp = TPS62160;
@@ -362,6 +334,34 @@ TimeStamp = /54EE5ACF;
 Reference = U2;
 ValeurCmp = RX5808;
 IdModule  = Foxtech:RX5808;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F06B13;
+Reference = U3;
+ValeurCmp = RF15-Punktlicht;
+IdModule  = Rafi:RF15-Punktlicht;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F07087;
+Reference = U4;
+ValeurCmp = RF15-Punktlicht;
+IdModule  = Rafi:RF15-Punktlicht;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F07102;
+Reference = U5;
+ValeurCmp = RF15-Punktlicht;
+IdModule  = Rafi:RF15-Punktlicht;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F071AA;
+Reference = U6;
+ValeurCmp = RF15-Punktlicht;
+IdModule  = Rafi:RF15-Punktlicht;
 EndCmp
 
 BeginCmp

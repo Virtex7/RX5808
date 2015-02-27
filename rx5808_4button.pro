@@ -1,4 +1,4 @@
-update=Mi 25 Feb 2015 23:41:17 CET
+update=Fr 27 Feb 2015 13:56:49 CET
 version=1
 last_client=kicad
 [cvpcb]
@@ -74,3 +74,4 @@ LibName30=valves
 LibName31=Resonator_3pins
 LibName32=rx5808
 LibName33=tps62160
+LibName34=Rafi
