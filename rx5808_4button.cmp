@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2014-08-05 BZR 5054)-product   date = Fr 27 Feb 2015 20:30:07 CET
+Cmp-Mod V01 Created by Cvpcb (2014-08-05 BZR 5054)-product   date = Sa 28 Feb 2015 12:13:20 CET
 
 BeginCmp
 TimeStamp = /54EE2578;
@@ -85,6 +85,13 @@ IdModule  = Capacitors_SMD:C_1206;
 EndCmp
 
 BeginCmp
+TimeStamp = /54F19297;
+Reference = C13;
+ValeurCmp = 100n;
+IdModule  = Capacitors_SMD:C_0603;
+EndCmp
+
+BeginCmp
 TimeStamp = /54EE7EC0;
 Reference = D1;
 ValeurCmp = SB130;
@@ -115,8 +122,8 @@ EndCmp
 BeginCmp
 TimeStamp = /54EE8563;
 Reference = L1;
-ValeurCmp = 2,2µH 1,4A;
-IdModule  = Inductors:self_cms_we-pd3;
+ValeurCmp = 2,2µH 5,9A;
+IdModule  = TDK_Inductor:VLF4012A;
 EndCmp
 
 BeginCmp
@@ -255,14 +262,14 @@ EndCmp
 BeginCmp
 TimeStamp = /54EE87EC;
 Reference = R10;
-ValeurCmp = 470k;
+ValeurCmp = 680k;
 IdModule  = Resistors_SMD:R_0603;
 EndCmp
 
 BeginCmp
 TimeStamp = /54EE881D;
 Reference = R11;
-ValeurCmp = 91k;
+ValeurCmp = 130k;
 IdModule  = Resistors_SMD:R_0805;
 EndCmp
 
@@ -326,6 +333,13 @@ BeginCmp
 TimeStamp = /54F07BC5;
 Reference = R20;
 ValeurCmp = 220;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F19CCA;
+Reference = R21;
+ValeurCmp = brücke;
 IdModule  = Resistors_SMD:R_0603;
 EndCmp
 
