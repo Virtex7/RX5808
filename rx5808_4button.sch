@@ -695,7 +695,7 @@ $EndComp
 Text Label 7200 2500 0    60   ~ 0
 rssi
 Wire Wire Line
-	7200 2500 7500 2500
+	6300 2500 7500 2500
 $Comp
 L BNC P5
 U 1 1 54EE5FCF
@@ -1812,4 +1812,30 @@ F 3 "" H 3000 2450 60  0000 C CNN
 	1    3000 2500
 	1    0    0    -1  
 $EndComp
+$Comp
+L CONN_01X02 P4
+U 1 1 54F268DC
+P 6100 2550
+F 0 "P4" H 6100 2700 50  0000 C CNN
+F 1 "CONN_01X02" V 6200 2550 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x02" H 6100 2550 60  0001 C CNN
+F 3 "" H 6100 2550 60  0000 C CNN
+	1    6100 2550
+	-1   0    0    -1  
+$EndComp
+$Comp
+L GND #PWR079
+U 1 1 54F26955
+P 6300 2650
+F 0 "#PWR079" H 6300 2400 60  0001 C CNN
+F 1 "GND" H 6300 2500 60  0000 C CNN
+F 2 "" H 6300 2650 60  0000 C CNN
+F 3 "" H 6300 2650 60  0000 C CNN
+	1    6300 2650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6300 2650 6300 2600
+Text Notes 5600 2300 0    60   ~ 0
+extra RSSI Ausgang\nfür Toni
 $EndSCHEMATC
