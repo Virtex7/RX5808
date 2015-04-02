@@ -5,4 +5,5 @@
   (lib (name Rafi)(type KiCad)(uri ${KIPRJMOD}/Rafi.pretty)(options "")(descr ""))
   (lib (name SMA_EDGE)(type Legacy)(uri ${KIPRJMOD}/SMA_EDGE.mod)(options "")(descr ""))
   (lib (name TDK_Inductor)(type KiCad)(uri ${KIPRJMOD}/TDK_Inductor.pretty)(options "")(descr ""))
+  (lib (name dickbutt)(type KiCad)(uri ${KIPRJMOD}/dickbutt.pretty)(options "")(descr ""))
 )
