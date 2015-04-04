@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2014-08-05 BZR 5054)-product   date = Fr 03 Apr 2015 02:06:37 CEST
+Cmp-Mod V01 Created by Cvpcb (2015-03-28 BZR 5547)-product   date = Sa 04 Apr 2015 14:47:55 CEST
 
 BeginCmp
 TimeStamp = /54EE2578;
@@ -158,14 +158,14 @@ BeginCmp
 TimeStamp = /54EE5FCF;
 Reference = P5;
 ValeurCmp = BNC;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
+IdModule  = RCA:Cinch_angled_mono;
 EndCmp
 
 BeginCmp
 TimeStamp = /54EE605B;
 Reference = P6;
 ValeurCmp = BNC;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
+IdModule  = RCA:Cinch_angled_mono;
 EndCmp
 
 BeginCmp
