@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2014-08-05 BZR 5054)-product   date = Fr 03 Apr 2015 00:30:35 CEST
+Cmp-Mod V01 Created by Cvpcb (2014-08-05 BZR 5054)-product   date = Fr 03 Apr 2015 02:06:37 CEST
 
 BeginCmp
 TimeStamp = /54EE2578;
@@ -130,7 +130,7 @@ BeginCmp
 TimeStamp = /54EE7DDD;
 Reference = P1;
 ValeurCmp = CONN_01X02;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
+IdModule  = Sockets_MOLEX_KK-System:Socket_MOLEX-KK-RM2-54mm_Lock_2pin_straight;
 EndCmp
 
 BeginCmp
