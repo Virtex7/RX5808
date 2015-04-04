@@ -975,14 +975,14 @@ L R R11
 U 1 1 54EE881D
 P 4800 1850
 F 0 "R11" V 4880 1850 50  0000 C CNN
-F 1 "130k" V 4807 1851 50  0000 C CNN
-F 2 "Resistors_SMD:R_0805" V 4730 1850 30  0001 C CNN
+F 1 "1M" V 4807 1851 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603" V 4730 1850 30  0001 C CNN
 F 3 "" H 4800 1850 30  0000 C CNN
 	1    4800 1850
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	4800 1600 4000 1600
+	4000 1600 4950 1600
 Wire Wire Line
 	4000 1600 4000 1500
 Wire Wire Line
@@ -1079,7 +1079,7 @@ F 3 "" H 3000 2100 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 Text Notes 1000 800  0    60   ~ 0
-Eingangsspannung 10 bis 16V
+Eingangsspannung 8 bis 16V
 Text Notes 2600 900  0    60   ~ 0
 Automotive BuckConverter\n12V to 5V, 1A\nkurzschlussfest
 $Comp
@@ -1838,4 +1838,27 @@ Wire Wire Line
 	6300 2650 6300 2600
 Text Notes 5600 2300 0    60   ~ 0
 extra RSSI Ausgang\nfür Toni
+$Comp
+L R R22
+U 1 1 551FF942
+P 4950 1850
+F 0 "R22" V 5030 1850 50  0000 C CNN
+F 1 "150k" V 4957 1851 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603" V 4880 1850 30  0001 C CNN
+F 3 "" H 4950 1850 30  0000 C CNN
+	1    4950 1850
+	1    0    0    -1  
+$EndComp
+$Comp
+L GNDPWR #PWR080
+U 1 1 551FFB48
+P 4950 2100
+F 0 "#PWR080" H 4950 1900 40  0001 C CNN
+F 1 "GNDPWR" H 4950 1970 40  0000 C CNN
+F 2 "" H 4950 2050 60  0000 C CNN
+F 3 "" H 4950 2050 60  0000 C CNN
+	1    4950 2100
+	1    0    0    -1  
+$EndComp
+Connection ~ 4800 1600
 $EndSCHEMATC

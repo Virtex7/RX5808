@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2015-03-28 BZR 5547)-product   date = Sa 04 Apr 2015 14:47:55 CEST
+Cmp-Mod V01 Created by Cvpcb (2015-03-28 BZR 5547)-product   date = Sa 04 Apr 2015 16:16:50 CEST
 
 BeginCmp
 TimeStamp = /54EE2578;
@@ -276,8 +276,8 @@ EndCmp
 BeginCmp
 TimeStamp = /54EE881D;
 Reference = R11;
-ValeurCmp = 130k;
-IdModule  = Resistors_SMD:R_0805;
+ValeurCmp = 1M;
+IdModule  = Resistors_SMD:R_0603;
 EndCmp
 
 BeginCmp
@@ -347,6 +347,13 @@ BeginCmp
 TimeStamp = /54F19CCA;
 Reference = R21;
 ValeurCmp = brücke;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /551FF942;
+Reference = R22;
+ValeurCmp = 150k;
 IdModule  = Resistors_SMD:R_0603;
 EndCmp
 
