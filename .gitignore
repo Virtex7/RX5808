@@ -12,9 +12,10 @@
 *.sym
 
 komische Dinge
-*.png
+*.xcf
 
 # KiCAD:
+_autosave-rx5808_4button.kicad_pcb
 *.bak
 *.brd
 *.kicad_pcb-bak
@@ -25,3 +26,8 @@ gerber/*
 #libre office
 .ods#
 .directory
+
+# einzelne Dateien
+doku/IMG_8555.JPG
+doku/IMG_8559.JPG
+minimosd.png
