@@ -94,9 +94,9 @@ SOFTWARE.
 
 #define CHANNEL_BAND_SIZE 8
 #define CHANNEL_MIN_INDEX 0
-#define CHANNEL_MAX_INDEX 31
+#define CHANNEL_MAX_INDEX 39
 
-#define CHANNEL_MAX 31
+#define CHANNEL_MAX 39
 #define CHANNEL_MIN 0
 
 #define TV_COLS 128
@@ -123,7 +123,8 @@ const uint16_t channelTable[] PROGMEM = {
   0x2A05,    0x299B,    0x2991,    0x2987,    0x291D,    0x2913,    0x2909,    0x289F,    // Band A
   0x2903,    0x290C,    0x2916,    0x291F,    0x2989,    0x2992,    0x299C,    0x2A05,    // Band B
   0x2895,    0x288B,    0x2881,    0x2817,    0x2A0F,    0x2A19,    0x2A83,    0x2A8D,    // Band E
-  0x2906,    0x2910,    0x291A,    0x2984,    0x298E,    0x2998,    0x2A02,    0x2A0C  // Band F / Airwave
+  0x2906,    0x2910,    0x291A,    0x2984,    0x298E,    0x2998,    0x2A02,    0x2A0C,    // Band F / Airwave
+  0x281d,    0x2890,    0x2902,    0x2915,    0x2987,    0x299a,    0x2a0c,    0x2a1f     // IRC Race Band
 };
 
 // Channels with their Mhz Values
@@ -132,7 +133,8 @@ const uint16_t channelFreqTable[] PROGMEM = {
   5865, 5845, 5825, 5805, 5785, 5765, 5745, 5725, // Band A
   5733, 5752, 5771, 5790, 5809, 5828, 5847, 5866, // Band B
   5705, 5685, 5665, 5645, 5885, 5905, 5925, 5945, // Band E
-  5740, 5760, 5780, 5800, 5820, 5840, 5860, 5880  // Band F / Airwave
+  5740, 5760, 5780, 5800, 5820, 5840, 5860, 5880, // Band F / Airwave
+  5658, 5695, 5732, 5769, 5806, 5843, 5880, 5917  // IRC Race Band
 };
 
 // do coding as simple hex value to save memory.
@@ -140,12 +142,13 @@ const uint8_t channelNames[] PROGMEM = {
   0xA1, 0xA2, 0xA3, 0xA4, 0xA5, 0xA6, 0xA7, 0xA8,
   0xB1, 0xB2, 0xB3, 0xB4, 0xB5, 0xB6, 0xB7, 0xB8,
   0xE1, 0xE2, 0xE3, 0xE4, 0xE5, 0xE6, 0xE7, 0xE8,
-  0xF1, 0xF2, 0xF3, 0xF4, 0xF5, 0xF6, 0xF7, 0xF8
+  0xF1, 0xF2, 0xF3, 0xF4, 0xF5, 0xF6, 0xF7, 0xF8,
+  0xC1, 0xC2, 0xC3, 0xC4, 0xC5, 0xC6, 0xC7, 0xC8
 };
 
 // All Channels of the above List ordered by Mhz
 const uint8_t channelList[] PROGMEM = {
-  19, 18, 17, 16, 7, 8, 24, 6, 9, 25, 5, 10, 26, 4, 11, 27, 3, 12, 28, 2, 13, 29, 1, 14, 30, 0, 15, 31, 20, 21, 22, 23
+  19, 32, 18, 17, 33, 16, 7, 34, 8, 24, 6, 9, 25, 5, 35, 10, 26, 4, 11, 27, 3, 36, 12, 28, 2, 13, 29, 37, 1, 14, 30, 0, 15, 31, 38, 20, 21, 39, 22, 23
 };
 
 uint8_t channel = 0;
@@ -247,19 +250,10 @@ void setup()
             digitalWrite(led, !digitalRead(led));
             delay(100);
         }
-    }
-    // init overlay
-    
-    //initOverlay();    
+    }   
   
     TV.select_font(font4x6);
-    // setup Genlock
-    //PCintPort::attachInterrupt(vsync_in,genlock ,RISING); // attach a PinChange Interrupt to our pin on the rising edge
-    
-    //PCintPort::attachInterrupt(vsync_in,genlock ,FALLING); // attach a PinChange Interrupt to our pin on the rising edge
 
-    //PCintPort::attachInterrupt(vsync_in,genlock ,FALLING); // attach a PinChange Interrupt to our pin on the rising edge
-    
     // hsync
     PCintPort::attachInterrupt(vsync_in,display.vsync_handle ,FALLING); // attach a PinChange Interrupt to our pin on the rising edge
     
@@ -606,7 +600,11 @@ void loop()
                 }
                 TV.printPGM(10, 5+2*MENU_Y_SIZE, PSTR("Band:")); 
                 // print band
-                if(channelIndex > 23)
+                if (channelIndex > 31)
+                {
+                    TV.printPGM(50,5+2*MENU_Y_SIZE,  PSTR("IRC RACE "));            
+                }
+                else if(channelIndex > 23)
                 {
                     TV.printPGM(50,5+2*MENU_Y_SIZE,  PSTR("F/Airwave"));            
                 }
@@ -724,7 +722,11 @@ void loop()
         if(update_frequency_view) // only updated on changes
         {
             // show current used channel of bank
-            if(channelIndex > 23)
+            if (channelIndex > 31)
+            {
+                TV.printPGM(50,TV_Y_OFFSET+1*TV_Y_GRID,  PSTR("IRC RACE "));            
+            }
+            else if(channelIndex > 23)
             {
                 TV.printPGM(50,TV_Y_OFFSET+1*TV_Y_GRID,  PSTR("F/Airwave"));            
             }
@@ -762,7 +764,7 @@ void loop()
         //  draw new bar
         TV.draw_rect(25, TV_Y_OFFSET+4*TV_Y_GRID, rssi_scaled, 4 , WHITE, WHITE);        
         // print bar for spectrum
-        channel=channel_from_index(channelIndex); // get 0...31 index depending of current channel            
+        channel=channel_from_index(channelIndex); // get 0...39 index depending of current channel            
         wait_rssi_ready();
         #define SCANNER_BAR_MINI_SIZE 14
         rssi = readRSSI();
@@ -1048,26 +1050,26 @@ void setChannelModule(uint8_t channel)
   // bit bash out 25 bits of data
   // Order: A0-3, !R/W, D0-D19
   // A0=0, A1=0, A2=0, A3=1, RW=0, D0-19=0
-  SERIAL_ENABLE_HIGH();
-  delayMicroseconds(1);  
+//  SERIAL_ENABLE_HIGH();
+//  delayMicroseconds(1);  
   //delay(2);
-  SERIAL_ENABLE_LOW();
+//  SERIAL_ENABLE_LOW();
 
-  SERIAL_SENDBIT0();
-  SERIAL_SENDBIT0();
-  SERIAL_SENDBIT0();
-  SERIAL_SENDBIT1();
+//  SERIAL_SENDBIT0();
+//  SERIAL_SENDBIT0();
+//  SERIAL_SENDBIT0();
+//  SERIAL_SENDBIT1();
 
-  SERIAL_SENDBIT0();
+//  SERIAL_SENDBIT0();
 
   // remaining zeros
-  for (i = 20; i > 0; i--)
-    SERIAL_SENDBIT0();
+//  for (i = 20; i > 0; i--)
+//    SERIAL_SENDBIT0();
 
   // Clock the data in
-  SERIAL_ENABLE_HIGH();
+//  SERIAL_ENABLE_HIGH();
   //delay(2);
-  delayMicroseconds(1);  
+//  delayMicroseconds(1);  
   SERIAL_ENABLE_LOW();
 
   // Second is the channel data from the lookup table
@@ -1120,28 +1122,28 @@ void setChannelModule(uint8_t channel)
 
 void SERIAL_SENDBIT1()
 {
-  digitalWrite(spiClockPin, LOW);
-  delayMicroseconds(1);
+//  digitalWrite(spiClockPin, LOW);
+//  delayMicroseconds(1);
 
   digitalWrite(spiDataPin, HIGH);
   delayMicroseconds(1);
+  
   digitalWrite(spiClockPin, HIGH);
   delayMicroseconds(1);
-
   digitalWrite(spiClockPin, LOW);
   delayMicroseconds(1);
 }
 
 void SERIAL_SENDBIT0()
 {
-  digitalWrite(spiClockPin, LOW);
-  delayMicroseconds(1);
+//  digitalWrite(spiClockPin, LOW);
+//  delayMicroseconds(1);
 
   digitalWrite(spiDataPin, LOW);
   delayMicroseconds(1);
+  
   digitalWrite(spiClockPin, HIGH);
   delayMicroseconds(1);
-
   digitalWrite(spiClockPin, LOW);
   delayMicroseconds(1);
 }

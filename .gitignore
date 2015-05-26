@@ -13,6 +13,9 @@
 
 komische Dinge
 *.png
+*.csv
+*.xml
+*.ods
 
 # KiCAD:
 *.bak
