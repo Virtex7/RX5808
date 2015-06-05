@@ -764,7 +764,7 @@ void loop()
         //  draw new bar
         TV.draw_rect(25, TV_Y_OFFSET+4*TV_Y_GRID, rssi_scaled, 4 , WHITE, WHITE);        
         // print bar for spectrum
-        channel=channel_from_index(channelIndex); // get 0...39 index depending of current channel            
+        channel=channel_from_index(channelIndex); // get 0...39 index depending of current channel
         wait_rssi_ready();
         #define SCANNER_BAR_MINI_SIZE 14
         rssi = readRSSI();
