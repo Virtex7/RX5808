@@ -199,7 +199,7 @@ void setup()
     pinMode(led, OUTPUT); // status pin for TV mode errors
     // buzzer
     pinMode(buzzer, OUTPUT); // Feedback buzzer (active buzzer, not passive piezo)   
-    digitalWrite(buzzer, HIGH);
+    digitalWrite(buzzer, LOW);
     // minimum control pins
     pinMode(buttonSeek, INPUT);
     digitalWrite(buttonSeek, INPUT_PULLUP);
@@ -949,9 +949,9 @@ void loop()
 
 void beep(uint16_t time)
 {
-    digitalWrite(buzzer, LOW);
-    delay(time);
     digitalWrite(buzzer, HIGH);
+    delay(time);
+    digitalWrite(buzzer, LOW);
 }
 
 uint8_t channel_from_index(uint8_t channelIndex)
