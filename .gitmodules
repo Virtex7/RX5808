@@ -1,0 +1,4 @@
+[submodule "rx5808-pro-diversity"]
+	path = rx5808-pro-diversity
+	url = git@github.com:sheaivey/rx5808-pro-diversity.git
+	branch = master

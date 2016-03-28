@@ -34,10 +34,6 @@ SOFTWARE.
 #include <avr/pgmspace.h>
 #include <EEPROM.h>
 
-#include <PinChangeInt.h>
-//#include <PinChangeIntConfig.h>
-
-
 #define spiDataPin 10
 #define slaveSelectPin 11
 #define spiClockPin 12
@@ -58,9 +54,6 @@ SOFTWARE.
 #define dip_band1 A4
 #define dip_enable A5
 
-// genlock vsync input
-#define vsync_in 13
-#define hsync_in 8
 // key debounce delay in ms
 // NOTE: good values are in the range of 100-200ms
 // shorter values will make it more reactive, but may lead to double trigger
@@ -94,9 +87,9 @@ SOFTWARE.
 
 #define CHANNEL_BAND_SIZE 8
 #define CHANNEL_MIN_INDEX 0
-#define CHANNEL_MAX_INDEX 39
+#define CHANNEL_MAX_INDEX 31
 
-#define CHANNEL_MAX 39
+#define CHANNEL_MAX 31
 #define CHANNEL_MIN 0
 
 #define TV_COLS 128
@@ -120,21 +113,21 @@ SOFTWARE.
 // Channels to sent to the SPI registers
 const uint16_t channelTable[] PROGMEM = {
   // Channel 1 - 8
-  0x2A05,    0x299B,    0x2991,    0x2987,    0x291D,    0x2913,    0x2909,    0x289F,    // Band A
-  0x2903,    0x290C,    0x2916,    0x291F,    0x2989,    0x2992,    0x299C,    0x2A05,    // Band B
-  0x2895,    0x288B,    0x2881,    0x2817,    0x2A0F,    0x2A19,    0x2A83,    0x2A8D,    // Band E
-  0x2906,    0x2910,    0x291A,    0x2984,    0x298E,    0x2998,    0x2A02,    0x2A0C,    // Band F / Airwave
-  0x281d,    0x2890,    0x2902,    0x2915,    0x2987,    0x299a,    0x2a0c,    0x2a1f     // IRC Race Band
+  0x2A05, 0x299B, 0x2991, 0x2987, 0x291D, 0x2913, 0x2909, 0x289F, // Band A
+  0x2903, 0x290C, 0x2916, 0x291F, 0x2989, 0x2992, 0x299C, 0x2A05, // Band B
+  0x2895, 0x288B, 0x2881, 0x2817, 0x2A0F, 0x2A19, 0x2A83, 0x2A8D, // Band E
+  0x2906, 0x2910, 0x291A, 0x2984, 0x298E, 0x2998, 0x2A02, 0x2A0C, // Band F / Airwave
+  0x281d, 0x2890, 0x2902, 0x2915, 0x2987, 0x299a, 0x2a0c, 0x2a1f  // IRC Air Race Frequenzen
 };
 
-// Channels with their Mhz Values
+// Channels with their MHz Values
 const uint16_t channelFreqTable[] PROGMEM = {
   // Channel 1 - 8
   5865, 5845, 5825, 5805, 5785, 5765, 5745, 5725, // Band A
   5733, 5752, 5771, 5790, 5809, 5828, 5847, 5866, // Band B
   5705, 5685, 5665, 5645, 5885, 5905, 5925, 5945, // Band E
   5740, 5760, 5780, 5800, 5820, 5840, 5860, 5880, // Band F / Airwave
-  5658, 5695, 5732, 5769, 5806, 5843, 5880, 5917  // IRC Race Band
+  5658, 5695, 5732, 5769, 5806, 5843, 5880, 5917  // IRC
 };
 
 // do coding as simple hex value to save memory.
@@ -146,9 +139,9 @@ const uint8_t channelNames[] PROGMEM = {
   0xC1, 0xC2, 0xC3, 0xC4, 0xC5, 0xC6, 0xC7, 0xC8
 };
 
-// All Channels of the above List ordered by Mhz
+// All Channels of the above List ordered by MHz
 const uint8_t channelList[] PROGMEM = {
-  19, 32, 18, 17, 33, 16, 7, 34, 8, 24, 6, 9, 25, 5, 35, 10, 26, 4, 11, 27, 3, 36, 12, 28, 2, 13, 29, 37, 1, 14, 30, 0, 15, 31, 38, 20, 21, 39, 22, 23
+  19, 18, 17, 16, 7, 8, 24, 6, 9, 25, 5, 10, 26, 4, 11, 27, 3, 12, 28, 2, 13, 29, 1, 14, 30, 0, 15, 31, 20, 21, 22, 23
 };
 
 uint8_t channel = 0;
@@ -182,18 +175,11 @@ uint16_t rssi_setup_max=0;
 uint16_t rssi_seek_found=0;
 uint16_t rssi_setup_run=0;
 
-// genlock hander
-#define GENLOCK_DLY 0
-
-uint8_t genlock_dly = GENLOCK_DLY;
-
 TVout TV;
-
 
 // SETUP ----------------------------------------------------------------------------
 void setup() 
 {    
-
     // IO INIT
     // initialize digital pin 13 LED as an output.
     pinMode(led, OUTPUT); // status pin for TV mode errors
@@ -230,11 +216,7 @@ void setup()
     // SPI pins for RX control
     pinMode (slaveSelectPin, OUTPUT);
     pinMode (spiDataPin, OUTPUT);
-	pinMode (spiClockPin, OUTPUT);
-    // genlock input
-    pinMode(vsync_in, INPUT);
-    pinMode(hsync_in, INPUT);
-
+	  pinMode (spiClockPin, OUTPUT);
     // tune to first channel
 
     
@@ -247,19 +229,11 @@ void setup()
     if (retVal > 0) {
         // on Error flicker LED
         while (true) { // stay in ERROR for ever
-            digitalWrite(led, !digitalRead(led));
+            digitalWrite(13, !digitalRead(13));
             delay(100);
         }
-    }   
-  
+    }
     TV.select_font(font4x6);
-
-    // hsync
-    PCintPort::attachInterrupt(vsync_in,display.vsync_handle ,FALLING); // attach a PinChange Interrupt to our pin on the rising edge
-    
-    
-    genlock_dly=GENLOCK_DLY;
-    
     // Setup Done - LED ON
     digitalWrite(13, HIGH);
     
@@ -287,63 +261,6 @@ void setup()
     force_menu_redraw=1;
 }
 
-// genlock ISR
-void genlock()
-{
-display.scanLine = 0;    
-    //uint8_t sreg = SREG;
-#if 0
-    if(genlock_dly)
-    {
-        genlock_dly--;
-    }
-    else
-    {  
-    genlock_dly=GENLOCK_DLY;
-    }
-    //SREG=sreg;
-#endif        
-}
-
-#if 0
-    ISR (PCINT0_vect) // handle pin change interrupt for D8 to D13 here
- {    
-    //digitalWrite(13,digitalRead(8) and digitalRead(9));
-    digitalWrite(led, !digitalRead(led));
-    display.scanLine = 0;    
- } 
- #endif
-// interup setup for input pin
-void pciSetup(byte pin)
-{
-    *digitalPinToPCMSK(pin) |= bit (digitalPinToPCMSKbit(pin));  // enable pin
-    PCIFR  |= bit (digitalPinToPCICRbit(pin)); // clear any outstanding interrupt
-    PCICR  |= bit (digitalPinToPCICRbit(pin)); // enable interrupt for the group
-}
- 
- // Initialize ATMega registers for video overlay capability.
-// Must be called after tv.begin().
-void initOverlay() {
-  // disable timer for free running video
-  TCCR1A = 0;
-  // Enable timer1.  ICES0 is set to 0 for falling edge detection on input capture pin.
-  // get hsync to state machine
-  TCCR1B = _BV(CS10);
-
-  //pciSetup(8);
-        
-  
-  // Enable input capture interrupt
-  TIMSK1 |= _BV(ICIE1);
-
-  // Enable external interrupt INT0 on pin 2 with falling edge.
-  //EIMSK = _BV(INT0); // enable interrupt
-  //EICRA = _BV(ISC11); // Falling edge int0
-}
-
-
-    
-    
 // LOOP ----------------------------------------------------------------------------
 void loop() 
 {      
@@ -482,14 +399,8 @@ void loop()
     // hardware save buttom support (if no display is used)
     if(digitalRead(buttonSave) == LOW)
     {
-        //state=STATE_SAVE;        
-        // DEBUG DEBUG
-        TV.video_clock(CLOCK_EXTERN);        
+        state=STATE_SAVE;        
     }        
-    else
-    {
-        TV.video_clock(CLOCK_INTERN);       
-    }
     /***************************************/
     /*   Draw screen if mode has changed   */
     /***************************************/
@@ -560,7 +471,7 @@ void loop()
                 TV.draw_line(0,2*TV_Y_GRID,TV_X_MAX,2*TV_Y_GRID,WHITE);    
                 TV.printPGM(5 ,TV_Y_OFFSET-1+2*TV_Y_GRID,  PSTR("1 2 3 4 5 6 7 8"));            
                 TV.draw_line(0,3*TV_Y_GRID,TV_X_MAX,3*TV_Y_GRID,WHITE);    
-                TV.printPGM(5,TV_Y_OFFSET+3*TV_Y_GRID,  PSTR("FREQ:     MHz"));    
+                TV.printPGM(5,TV_Y_OFFSET+3*TV_Y_GRID,  PSTR("FREQ:     GHz"));    
                 TV.draw_line(0,4*TV_Y_GRID,TV_X_MAX,4*TV_Y_GRID,WHITE);    
                 TV.select_font(font4x6);                
                 TV.printPGM(5,TV_Y_OFFSET+4*TV_Y_GRID,  PSTR("RSSI:"));    
@@ -600,24 +511,19 @@ void loop()
                 }
                 TV.printPGM(10, 5+2*MENU_Y_SIZE, PSTR("Band:")); 
                 // print band
-                if (channelIndex > 31)
-                {
-                    TV.printPGM(50,5+2*MENU_Y_SIZE,  PSTR("IRC RACE "));            
+                if (channelIndex > 31) {
+                    TV.printPGM(50,5+2*MENU_Y_SIZE,  PSTR("AirRace  "));
                 }
-                else if(channelIndex > 23)
-                {
+                else if(channelIndex > 23) {
                     TV.printPGM(50,5+2*MENU_Y_SIZE,  PSTR("F/Airwave"));            
                 }
-                else if (channelIndex > 15)
-                {
+                else if (channelIndex > 15) {
                     TV.printPGM(50,5+2*MENU_Y_SIZE,  PSTR("E        "));            
                 }
-                else if (channelIndex > 7)
-                {
+                else if (channelIndex > 7) {
                     TV.printPGM(50,5+2*MENU_Y_SIZE,  PSTR("B        "));            
                 }
-                else
-                {
+                else {
                     TV.printPGM(50,5+2*MENU_Y_SIZE,  PSTR("A        "));            
                 }                
                 TV.printPGM(10, 5+3*MENU_Y_SIZE, PSTR("Chan:"));   
@@ -722,25 +628,20 @@ void loop()
         if(update_frequency_view) // only updated on changes
         {
             // show current used channel of bank
-            if (channelIndex > 31)
-            {
-                TV.printPGM(50,TV_Y_OFFSET+1*TV_Y_GRID,  PSTR("IRC RACE "));            
+            if(channelIndex > 31) {
+                TV.printPGM(50,TV_Y_OFFSET+1*TV_Y_GRID,  PSTR("AirRace  "));
             }
-            else if(channelIndex > 23)
-            {
-                TV.printPGM(50,TV_Y_OFFSET+1*TV_Y_GRID,  PSTR("F/Airwave"));            
+            else if(channelIndex > 23) {
+                TV.printPGM(50,TV_Y_OFFSET+1*TV_Y_GRID,  PSTR("F/Airwave"));
             }
-            else if (channelIndex > 15)
-            {
-                TV.printPGM(50,TV_Y_OFFSET+1*TV_Y_GRID,  PSTR("E        "));            
+            else if (channelIndex > 15) {
+                TV.printPGM(50,TV_Y_OFFSET+1*TV_Y_GRID,  PSTR("E        "));
             }
-            else if (channelIndex > 7)
-            {
-                TV.printPGM(50,TV_Y_OFFSET+1*TV_Y_GRID,  PSTR("B        "));            
+            else if (channelIndex > 7) {
+                TV.printPGM(50,TV_Y_OFFSET+1*TV_Y_GRID,  PSTR("B        "));
             }
-            else
-            {
-                TV.printPGM(50,TV_Y_OFFSET+1*TV_Y_GRID,  PSTR("A        "));            
+            else {
+                TV.printPGM(50,TV_Y_OFFSET+1*TV_Y_GRID,  PSTR("A        "));
             }
             // show channel inside band
             uint8_t active_channel = channelIndex%CHANNEL_BAND_SIZE; // get channel inside band
@@ -764,7 +665,7 @@ void loop()
         //  draw new bar
         TV.draw_rect(25, TV_Y_OFFSET+4*TV_Y_GRID, rssi_scaled, 4 , WHITE, WHITE);        
         // print bar for spectrum
-        channel=channel_from_index(channelIndex); // get 0...39 index depending of current channel
+        channel=channel_from_index(channelIndex); // get 0...31 index depending of current channel            
         wait_rssi_ready();
         #define SCANNER_BAR_MINI_SIZE 14
         rssi = readRSSI();
@@ -1050,26 +951,26 @@ void setChannelModule(uint8_t channel)
   // bit bash out 25 bits of data
   // Order: A0-3, !R/W, D0-D19
   // A0=0, A1=0, A2=0, A3=1, RW=0, D0-19=0
-//  SERIAL_ENABLE_HIGH();
-//  delayMicroseconds(1);  
+  SERIAL_ENABLE_HIGH();
+  delayMicroseconds(1);  
   //delay(2);
-//  SERIAL_ENABLE_LOW();
+  SERIAL_ENABLE_LOW();
 
-//  SERIAL_SENDBIT0();
-//  SERIAL_SENDBIT0();
-//  SERIAL_SENDBIT0();
-//  SERIAL_SENDBIT1();
+  SERIAL_SENDBIT0();
+  SERIAL_SENDBIT0();
+  SERIAL_SENDBIT0();
+  SERIAL_SENDBIT1();
 
-//  SERIAL_SENDBIT0();
+  SERIAL_SENDBIT0();
 
   // remaining zeros
-//  for (i = 20; i > 0; i--)
-//    SERIAL_SENDBIT0();
+  for (i = 20; i > 0; i--)
+    SERIAL_SENDBIT0();
 
   // Clock the data in
-//  SERIAL_ENABLE_HIGH();
+  SERIAL_ENABLE_HIGH();
   //delay(2);
-//  delayMicroseconds(1);  
+  delayMicroseconds(1);  
   SERIAL_ENABLE_LOW();
 
   // Second is the channel data from the lookup table
@@ -1122,28 +1023,28 @@ void setChannelModule(uint8_t channel)
 
 void SERIAL_SENDBIT1()
 {
-//  digitalWrite(spiClockPin, LOW);
-//  delayMicroseconds(1);
+  digitalWrite(spiClockPin, LOW);
+  delayMicroseconds(1);
 
   digitalWrite(spiDataPin, HIGH);
   delayMicroseconds(1);
-  
   digitalWrite(spiClockPin, HIGH);
   delayMicroseconds(1);
+
   digitalWrite(spiClockPin, LOW);
   delayMicroseconds(1);
 }
 
 void SERIAL_SENDBIT0()
 {
-//  digitalWrite(spiClockPin, LOW);
-//  delayMicroseconds(1);
+  digitalWrite(spiClockPin, LOW);
+  delayMicroseconds(1);
 
   digitalWrite(spiDataPin, LOW);
   delayMicroseconds(1);
-  
   digitalWrite(spiClockPin, HIGH);
   delayMicroseconds(1);
+
   digitalWrite(spiClockPin, LOW);
   delayMicroseconds(1);
 }
