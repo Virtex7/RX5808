@@ -1,4 +1,4 @@
-update=Mi 30 Mär 2016 21:18:14 CEST
+update=Do 07 Apr 2016 15:50:55 CEST
 version=1
 last_client=kicad
 [cvpcb]
@@ -8,26 +8,6 @@ NetIExt=net
 EquName1=devcms
 [general]
 version=1
-[pcbnew]
-version=1
-PageLayoutDescrFile=
-LastNetListRead=
-UseCmpFile=1
-PadDrill=0
-PadDrillOvalY=0
-PadSizeH=4.572
-PadSizeV=1.524
-PcbTextSizeV=1.5
-PcbTextSizeH=1.5
-PcbTextThickness=0.3
-ModuleTextSizeV=1
-ModuleTextSizeH=1
-ModuleTextSizeThickness=0.15
-SolderMaskClearance=0.09999999999999999
-SolderMaskMinWidth=0
-DrawSegmentWidth=0.2
-BoardOutlineThickness=0.09999999999999999
-ModuleOutlineThickness=0.15
 [eeschema]
 version=1
 LibDir=../../PhilippsKicadBauteile/Schaltplansymbole
@@ -70,3 +50,22 @@ LibName35=tps62160
 LibName36=Rafi
 LibName37=/home/philipp/Dokumente/dev/PhilippsKicadBauteile/Schaltplansymbole/ok-74logic
 LibName38=ok-switches
+[pcbnew]
+version=1
+PageLayoutDescrFile=
+LastNetListRead=rx5808_4button.net
+PadDrill=0
+PadDrillOvalY=0
+PadSizeH=4.07162
+PadSizeV=1.99898
+PcbTextSizeV=1.5
+PcbTextSizeH=1.5
+PcbTextThickness=0.3
+ModuleTextSizeV=1
+ModuleTextSizeH=1
+ModuleTextSizeThickness=0.15
+SolderMaskClearance=0.15
+SolderMaskMinWidth=0
+DrawSegmentWidth=0.2
+BoardOutlineThickness=0.09999999999999999
+ModuleOutlineThickness=0.15

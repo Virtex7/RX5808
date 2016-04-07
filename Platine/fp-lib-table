@@ -9,4 +9,5 @@
   (lib (name RCA)(type KiCad)(uri ${KIPRJMOD}/RCA.pretty)(options "")(descr ""))
   (lib (name PhilippsFootprints)(type KiCad)(uri /home/philipp/Dokumente/dev/PhilippsKicadBauteile/PhilippsFootprints.pretty)(options "")(descr ""))
   (lib (name spezifisch)(type KiCad)(uri "$(KIPRJMOD)/spezifisch.pretty")(options "")(descr ""))
+  (lib (name NR3015)(type KiCad)(uri "$(KIPRJMOD)/NR3015.pretty")(options "")(descr ""))
 )
