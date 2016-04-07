@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name PhilippsFootprints)(type KiCad)(uri /home/philipp/Dokumente/dev/PhilippsKicadBauteile/PhilippsFootprints.pretty)(options "")(descr ""))
+)
