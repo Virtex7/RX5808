@@ -1,4 +1,4 @@
-update=Sa 16 Mai 2015 00:17:12 CEST
+update=Mi 30 Mär 2016 21:18:14 CEST
 version=1
 last_client=kicad
 [cvpcb]
@@ -30,7 +30,7 @@ BoardOutlineThickness=0.09999999999999999
 ModuleOutlineThickness=0.15
 [eeschema]
 version=1
-LibDir=
+LibDir=../../PhilippsKicadBauteile/Schaltplansymbole
 [eeschema/libraries]
 LibName1=rx5808_4button-rescue
 LibName2=SMA_EDGE
@@ -68,3 +68,5 @@ LibName33=Resonator_3pins
 LibName34=rx5808
 LibName35=tps62160
 LibName36=Rafi
+LibName37=/home/philipp/Dokumente/dev/PhilippsKicadBauteile/Schaltplansymbole/ok-74logic
+LibName38=ok-switches
