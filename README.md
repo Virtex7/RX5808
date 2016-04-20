@@ -5,3 +5,11 @@ basierend auf dem Projekt von Marko Hoepken
 https://code.google.com/p/rx5808-pro/wiki/Overview
 
 wurde diese Platine entworfen, um einen vielseitigen FPV-Empfänger bauen zu können
+
+
+## Aufbau
+
+### Bill of Material
+| Anzahl | Bauteilname | Gehäuseform | Referenz(en) auf der Platine | Digikeynummer |
+| ------ | ----------- | ----------- | ---------------------------- | ------------- |
+|

@@ -1,7 +1,7 @@
 (export (version D)
   (design
     (source /home/philipp/Dokumente/dev/RX5808/Platine/rx5808_4button.sch)
-    (date "So 10 Apr 2016 11:02:38 CEST")
+    (date "Fr 15 Apr 2016 01:09:55 CEST")
     (tool "Eeschema (2016-03-18 BZR 6629)-product")
     (sheet (number 1) (name /) (tstamps /)
       (title_block
@@ -200,7 +200,7 @@
       (tstamp 54EED9F6))
     (comp (ref SMA_E1)
       (value SMA_EDGE)
-      (footprint PhilippsFootprints:SMA_EDGE_small)
+      (footprint PhilippsFootprints:SMA_EDGE_Johnson_142-0701-801)
       (libsource (lib SMA_EDGE) (part SMA_EDGE))
       (sheetpath (names /) (tstamps /))
       (tstamp 54F0E594))
@@ -637,12 +637,12 @@
       (uri /home/philipp/Dokumente/dev/PhilippsKicadBauteile/Schaltplansymbole/ok-74logic.lib))
     (library (logical rx5808_4button-cache)
       (uri /home/philipp/Dokumente/dev/RX5808/Platine/rx5808_4button-cache.lib))
-    (library (logical SMA_EDGE)
-      (uri /home/philipp/Dokumente/dev/RX5808/Platine/SMA_EDGE.lib))
     (library (logical device)
       (uri /usr/local/share/kicad/library/device.lib))
     (library (logical conn)
-      (uri /usr/local/share/kicad/library/conn.lib)))
+      (uri /usr/local/share/kicad/library/conn.lib))
+    (library (logical SMA_EDGE)
+      (uri /home/philipp/Dokumente/dev/RX5808/Platine/SMA_EDGE.lib)))
   (nets
     (net (code 1) (name GND)
       (node (ref U3) (pin 2))
