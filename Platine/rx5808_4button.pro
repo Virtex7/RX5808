@@ -1,4 +1,4 @@
-update=So 10 Apr 2016 11:00:34 CEST
+update=Sa 23 Apr 2016 12:11:43 CEST
 version=1
 last_client=kicad
 [cvpcb]
@@ -6,8 +6,6 @@ version=1
 NetIExt=net
 [cvpcb/libraries]
 EquName1=devcms
-[general]
-version=1
 [pcbnew]
 version=1
 PageLayoutDescrFile=
@@ -67,3 +65,5 @@ LibName33=tps62160
 LibName34=Rafi
 LibName35=ok-74logic
 LibName36=ok-switches
+[general]
+version=1
