@@ -1,0 +1,8 @@
+Fuses für den ATmega328pb (Bootsize für den Arduino-Bootloader)
+Loader: normaler atmega-bootloader, nicht optiboot
+
+name: ATmegaBOOT_168_atmega328.hex
+
+EFUSE: 0x05
+HFUSE: 0xD8
+LFUSE: 0xE6
