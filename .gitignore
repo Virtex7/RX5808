@@ -18,7 +18,9 @@ komische Dinge
 *.xcf
 
 # KiCAD:
-_autosave-rx5808_4button.kicad_pcb
+#_autosave-rx5808_4button.kicad_pcb
+#_autosave-diversityModule.kicad_pcb
+_autosave-*
 *.bak
 *.brd
 *.kicad_pcb-bak
