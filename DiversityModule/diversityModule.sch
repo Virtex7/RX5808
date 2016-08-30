@@ -575,11 +575,12 @@ L POT RV1
 U 1 1 5706E87E
 P 5550 5500
 F 0 "RV1" H 5550 5372 50  0000 C CNN
-F 1 "POT" H 5550 5281 50  0000 C CNN
+F 1 "10k lin" H 5550 5281 50  0000 C CNN
 F 2 "PhilippsFootprints:Poti-SMD-Model-23A" H 5550 5500 50  0001 C CNN
 F 3 "" H 5550 5500 50  0000 C CNN
+F 4 "23A-10K" H 5550 5500 60  0001 C CNN "Reichelt-Nummer"
 	1    5550 5500
-	1    0    0    -1  
+	-1   0    0    -1  
 $EndComp
 Wire Wire Line
 	5000 5500 5400 5500
