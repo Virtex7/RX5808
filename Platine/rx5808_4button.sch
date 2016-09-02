@@ -343,8 +343,8 @@ F 4 "S5B-PH-SM4-TB(LF)(SN)" H 1100 6900 60  0001 C CNN "Herstellernummer"
 	1    1100 6900
 	0    1    1    0   
 $EndComp
-Text Notes 850  7350 0    60   ~ 0
-Gayduino\nProgrammierstecker
+Text Notes 850  7400 0    60   ~ 0
+Arduino\nProgrammierstecker\nAusführung JST-PH
 NoConn ~ 3950 5550
 Text Label 1750 5750 0    60   ~ 0
 rssi1
@@ -670,7 +670,7 @@ F 3 "" H 3100 2100 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 Text Notes 1100 800  0    60   ~ 0
-Eingangsspannung 8 bis 16V
+Eingangsspannung 6 bis 16V
 Text Notes 2700 900  0    60   ~ 0
 Automotive BuckConverter\n12V to 5V, 1A\nkurzschlussfest
 $Comp
@@ -1706,10 +1706,10 @@ F 3 "" H 8350 1100 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR068
+L GND #PWR067
 U 1 1 575693C2
 P 8350 1250
-F 0 "#PWR068" H 8350 1000 50  0001 C CNN
+F 0 "#PWR067" H 8350 1000 50  0001 C CNN
 F 1 "GND" V 8358 1122 50  0000 R CNN
 F 2 "" H 8350 1250 50  0000 C CNN
 F 3 "" H 8350 1250 50  0000 C CNN
@@ -1736,4 +1736,6 @@ Wire Wire Line
 	7950 950  7950 950 
 Wire Wire Line
 	8800 5350 8900 5350
+Text Notes 8700 1450 0    60   ~ 0
+ACHTUNG: es gibt mehrere Modelle des OLEDs.\nPinkompatibilität beachten!
 $EndSCHEMATC

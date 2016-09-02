@@ -23,6 +23,8 @@ Achtung: HF-Verstärker und Tonausgabe stehen nur bei Verwendung des optionalen 
 
 Das Diversity-Modul wird automatisch erkannt und dann auch im Menü angezeigt. Es muss keine Änderung an der Software vorgenommen werden. Im Diversity-Modus zeigt eine grüne LED an, welches Modul gerade das Videosignal an den Ausgang liefert. Die Umschaltung zwischen den Empfängern erfolgt für das Videobild unsichtbar.
 
+Schließlich lässt sich noch ein kompatibler Videosender durch eine IR-Schnittstelle auf den gewünschten Kanal einstellen, die dazu nötige IR-Sendediode D5 liegt an einer Platinenecke direkt neben der SMA-Buchse.
+
 ## Aufbau
 Bestellnummern werden nur bei Bauteilen angegeben, die nicht als "Standardbauteil, also wie ein normaler Kondensator oder Widerstand aus der E12-Reihe, bezeichnet werden können. Leider reicht es nicht aus, ausschließlich bei Digikey zu bestellen, da hier einzelne Teile nicht verfügbar sind. Es gibt in Deutschland keinen Distributor, der alle benötigten Teile liefern kann.
 
@@ -40,6 +42,8 @@ Von der Reihenfolge her sollte man zuerst die kleinen, meist passiven, Bauelemen
 
 ### Test
 Bevor das Modul programmiert werden kann, muss es getestet werden. Es geht hier ausschließlich darum, ob der Schaltwandler die richtige Ausgangsspannung liefert. Achtung: nur wenn R21 gesetzt ist, kann der Schaltwandler korrekt arbeiten. Ansonsten gibt er eine leicht zu hohe Spannung aus, weil die Ausgangslast zu gering ist.
+
+Achtung bei der Montage des Kabels zwischen Hauptmodul und Diversityplatine! Die Verpolschutznasen der Micromatchstecker brechen leicht ab und die Diversityplatine ist nicht explizit verpolgeschützt. Daher vor Einschalten der Stromversorgung auf jeden Fall auf korrekte Verkabelung kontrollieren. Beim Verpolen wird zwar die 5V-Versorgung des Moduls auf einen absichtlich nicht verwendeten Pin gelegt, aber durch die Steuersignale könnte dennoch ein Latch-Up-Effekt auftreten.
 
 Die Eingangsspannung wird an den JST-XH-Stecker mit vier Pins angeschlossen, so lange keine Betriebsspannung in den Videoausgang eingespeist wird, ist das Modul verpol- und Überspannungsgeschützt. Sinnvollerweise sollte die Stromversorgung an die beiden oberen Pins des Steckers (Modul liegt so auf dem Tisch, dass der Versorgungsstecker *P1* links liegt) Pin 1 des Steckers ist Power-Masse und Pin 2 Stromversorgung. Für den Test wird hier eine Spannung von 6V eingespeist, weil diese den Mikrocontroller nicht schädigt, wenn der Schaltwandler noch nicht funktioniert, aber eigendlich schon auf 5,0V heruntergeregelt werden sollte. Die Ausgangsspannung kann über den Kondensator C10 leicht gemessen werden; wenn sie passt, also im Breich 4,9 bis 5,1V liegt und sich auch bei Variation der Eingangsspannung nicht ändert, darf die Eingangsspannung auf bis zu 15V angehoben werden. Die Stromaufnahme des Moduls muss hier ohne Empfängermodul etwa bei 10mA liegen. Deutlich höhere Stromaufnahme deutet fast immer auf einen Lötfehler hin.
 
